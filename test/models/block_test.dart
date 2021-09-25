@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:minesweeper/models/block.dart';
-import 'package:minesweeper/models/explosion_exception.dart';
+import 'package:minesweeper/models/exceptions.dart';
 
 void main() {
   group('Block', () {

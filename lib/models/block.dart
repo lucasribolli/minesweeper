@@ -1,4 +1,4 @@
-import 'package:minesweeper/models/explosion_exception.dart';
+import 'package:minesweeper/models/exceptions.dart';
 
 class Block {
   final int line;
@@ -65,6 +65,21 @@ class Block {
     _exploded = false;
   }
 
+  bool get isSolved {
+    bool markedAndWithMine = isMarked && isWithMine;
+    bool safeAndOpened = !isWithMine && isOpened;
+
+    return markedAndWithMine || safeAndOpened;
+  }
+
+  bool get isSafeNeighborhood {
+    return neighbors.every((neighbor) => !neighbor.isWithMine);
+  }
+
+  int get numberOfMinesInNeighborhood {
+    return neighbors.where((neighbor) => neighbor.isWithMine).length;
+  }
+
   void putMine() {
     _withMine = true;
   }
@@ -83,20 +98,5 @@ class Block {
 
   bool get isMarked {
     return _marked;
-  }
-
-  bool get isSolved {
-    bool markedAndWithMine = isMarked && isWithMine;
-    bool safeAndOpened = !isWithMine && isOpened;
-
-    return markedAndWithMine || safeAndOpened;
-  }
-
-  bool get isSafeNeighborhood {
-    return neighbors.every((neighbor) => !neighbor.isWithMine);
-  }
-
-  int get numberOfMinesInNeighborhood {
-    return neighbors.where((neighbor) => neighbor.isWithMine).length;
   }
 }
