@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
 
 class ResultWidget extends StatelessWidget implements PreferredSizeWidget {
   final bool? won;
@@ -11,7 +10,7 @@ class ResultWidget extends StatelessWidget implements PreferredSizeWidget {
     required this.onRestart,
   }) : super(key: key);
 
-  Color? _getColor() {
+  _getColor() {
     if (won == null) {
       return Colors.yellow;
     } else if (won!) {
@@ -37,7 +36,7 @@ class ResultWidget extends StatelessWidget implements PreferredSizeWidget {
       color: Colors.grey,
       child: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(1.w),
+          padding: EdgeInsets.all(1),
           child: CircleAvatar(
             backgroundColor: _getColor(),
             child: IconButton(
@@ -46,7 +45,7 @@ class ResultWidget extends StatelessWidget implements PreferredSizeWidget {
               icon: Icon(
                 _getIcon(),
                 color: Colors.black,
-                size: 5.h,
+                size: 5,
               ),
             ),
           ),
